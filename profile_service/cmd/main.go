@@ -3,5 +3,5 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Starting user_service...")
+	fmt.Println("Starting profile_service...")
 }

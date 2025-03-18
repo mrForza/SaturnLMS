@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "5ce2e070-9aa0-4750-87b6-1da1d778d8fb",
+		"name": "SaturnLMS profile_service integration tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "42619925"
+	},
+	"item": [
+		{
+			"name": "Healthcheck",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/healthcheck"
+			},
+			"response": []
+		},
+		{
+			"name": "Registration",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8080/auth/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "Authentication",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8080/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8080/auth/logout"
+			},
+			"response": []
+		},
+		{
+			"name": "Password reset",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8080/auth/reset"
+			},
+			"response": []
+		},
+		{
+			"name": "Get user-profile information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/user-profile/"
+			},
+			"response": []
+		},
+		{
+			"name": "Create user-profile information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8080/user-profile/"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user-profile information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/user-profile/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get student-profile information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/student-profile/"
+			},
+			"response": []
+		},
+		{
+			"name": "Create student-profile information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8080/student-profile/"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete student-profile information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/student-profile/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get teacher-profile information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/teacher-profile/"
+			},
+			"response": []
+		},
+		{
+			"name": "Create teacher-profile information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8080/teacher-profile/"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete teacher-profile information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/teacher-profile/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get admin-profile information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/admin-profile/"
+			},
+			"response": []
+		},
+		{
+			"name": "Create admin-profile information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8080/admin-profile/"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete admin-profile information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/admin-profile/"
+			},
+			"response": []
+		}
+	]
+}

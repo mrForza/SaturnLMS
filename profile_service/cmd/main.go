@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/mrForza/SaturnLMS/profile_service/internal/config"
-	"github.com/mrForza/SaturnLMS/profile_service/internal/routes"
+	routes "github.com/mrForza/SaturnLMS/profile_service/internal/routers"
 )
 
 func main() {
@@ -21,7 +21,12 @@ func main() {
 		})
 	})
 
+	routes.RegisterHealthcheckRouter(server)
 	routes.RegisterAuthRouters(server)
+	routes.RegisterUserProfileRouters(server)
+	routes.RegisterStudentProfileRouters(server)
+	routes.RegisterTeacherProfileRouters(server)
+	routes.RegisterAdminProfileRouters(server)
 
 	server.Run(":8080")
 }

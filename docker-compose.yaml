@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  profile_service:
+    container_name: profileService.api
+    build:
+      context: .
+      dockerfile: ./profile_service/Dockerfile
+    # restart: on-failure
+    environment:
+      - CONFIG_PATH=./configs/dev.yaml
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    depends_on:
+      profile_database:
+        condition: service_started
+
+  profile_database:
+    container_name: profileService.postgres
+    image: postgres:latest
+    restart: on-failure
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./profile_service/configs/database.env
+    volumes:
+      - profileService.postgres.data:/var/lib/postgresql/profiles:rw
+      - ./profile_service/configs/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
+      interval: 10s
+      timeout: 60s
+      retries: 5
+      start_period: 10s
+
+  # organization_service:
+
+  # organization_database:
+
+  # assessment_service:
+
+  # study_service:
+
+  # api_gateway:
+
+networks:
+  profileService.postgres.network: { }
+
+volumes:
+  profileService.postgres.data: { }

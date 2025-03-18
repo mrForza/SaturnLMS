@@ -1,0 +1,15 @@
+FROM golang:alpine AS builder
+
+WORKDIR /app
+
+COPY ./profile_service/go.* ./
+
+RUN go mod download
+
+COPY ./profile_service/ .
+
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./bin/main ./cmd/main.go
+
+EXPOSE 8080
+
+CMD ["./bin/main"]

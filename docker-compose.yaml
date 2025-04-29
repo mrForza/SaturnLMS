@@ -8,7 +8,7 @@ services:
       dockerfile: ./profile_service/Dockerfile
     # restart: on-failure
     environment:
-      - CONFIG_PATH=./configs/dev.yaml
+      - CONFIG_PATH=./configs
     expose:
       - "8080"
     ports:
@@ -26,7 +26,7 @@ services:
     ports:
       - "5432:5432"
     env_file:
-      - ./profile_service/configs/database.env
+      - ./profile_service/configs/db.env
     volumes:
       - profileService.postgres.data:/var/lib/postgresql/profiles:rw
       - ./profile_service/configs/init.sql:/docker-entrypoint-initdb.d/init.sql

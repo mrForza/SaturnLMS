@@ -1,11 +1,355 @@
 {
 	"info": {
-		"_postman_id": "5ce2e070-9aa0-4750-87b6-1da1d778d8fb",
+		"_postman_id": "10c4356f-ad28-40d4-9dbd-d194ad5ec512",
 		"name": "SaturnLMS profile_service integration tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "42619925"
+		"_exporter_id": "28233508"
 	},
 	"item": [
+		{
+			"name": "UserProfile",
+			"item": [
+				{
+					"name": "Get user-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/user-profile/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create user-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Kirill\",\r\n    \"last_name\": \"Sarychev\",\r\n    \"father_name\": \"Victorovich\",\r\n    \"age\": 33,\r\n    \"gender\": false,\r\n    \"about_me\": \"asfwewrwer ipsum\",\r\n    \"interests\": \"werweddewt egg wege rt wtw te \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/user-profile/"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/user-profile/0b8d1d49-bea4-4888-8241-ac775268534f"
+					},
+					"response": []
+				},
+				{
+					"name": "Get user-profile by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/user-profile/0b8d1d49-bea4-4888-8241-ac775268534f"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "StudentProfile",
+			"item": [
+				{
+					"name": "Get student-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/student-profile/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create student-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"university_name\": \"HSE\",\r\n    \"facultaty_name\": \"FCS\",\r\n    \"program_name\": \"PE\",\r\n    \"group_number\": 222,\r\n    \"course_number\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/student-profile/"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete student-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/student-profile/fdb24cbd-c101-47d9-960a-3e5844f3574c"
+					},
+					"response": []
+				},
+				{
+					"name": "Get student-profile by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/student-profile/fdb24cbd-c101-47d9-960a-3e5844f3574c"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TeacherProfile",
+			"item": [
+				{
+					"name": "Get teacher-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/teacher-profile/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create teacher-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"education\": \"MSU\",\r\n    \"scientific_experience\": \"Lorem ipsum scientific\",\r\n    \"teaching_experience\": \"Lorem ipsum teacher\",\r\n    \"professional_interests\": \"Algebra\",\r\n    \"achievements\": \"Winner of Vseros\",\r\n    \"languages\": \"RU ENG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/teacher-profile/"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete teacher-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/teacher-profile/6e501b74-96bd-4e43-adee-7a5d14418229"
+					},
+					"response": []
+				},
+				{
+					"name": "Get teacher-profile by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/teacher-profile/6e501b74-96bd-4e43-adee-7a5d14418229"
+					},
+					"response": []
+				},
+				{
+					"name": "Get teacher-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/teacher-profile/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create teacher-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"education\": \"MSU\",\r\n    \"scientific_experience\": \"Lorem ipsum scientific\",\r\n    \"teaching_experience\": \"Lorem ipsum teacher\",\r\n    \"professional_interests\": \"Algebra\",\r\n    \"achievements\": \"Winner of Vseros\",\r\n    \"languages\": \"RU ENG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/teacher-profile/"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete teacher-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/teacher-profile/6e501b74-96bd-4e43-adee-7a5d14418229"
+					},
+					"response": []
+				},
+				{
+					"name": "Get teacher-profile by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/teacher-profile/6e501b74-96bd-4e43-adee-7a5d14418229"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AdministrativeProfile",
+			"item": [
+				{
+					"name": "Get admin-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/admin-profile/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create admin-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"education\": \"MSU\",\r\n    \"work_experience\": \"Lorem ipsum scientific\",\r\n    \"achievements\": \"Winner of Vseros\",\r\n    \"languages\": \"RU ENG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/admin-profile/"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete admin-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/admin-profile/172d8be5-09e2-4e2f-87e6-d0fc7c7cf99b"
+					},
+					"response": []
+				},
+				{
+					"name": "Get admin-profile by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/admin-profile/172d8be5-09e2-4e2f-87e6-d0fc7c7cf99b"
+					},
+					"response": []
+				},
+				{
+					"name": "Get admin-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/admin-profile/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create admin-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"education\": \"MSU\",\r\n    \"work_experience\": \"Lorem ipsum scientific\",\r\n    \"achievements\": \"Winner of Vseros\",\r\n    \"languages\": \"RU ENG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/admin-profile/"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete admin-profile information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/admin-profile/172d8be5-09e2-4e2f-87e6-d0fc7c7cf99b"
+					},
+					"response": []
+				},
+				{
+					"name": "Get admin-profile by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/admin-profile/172d8be5-09e2-4e2f-87e6-d0fc7c7cf99b"
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "Healthcheck",
 			"request": {
@@ -15,198 +359,6 @@
 				"method": "GET",
 				"header": [],
 				"url": "http://localhost:8080/healthcheck"
-			},
-			"response": []
-		},
-		{
-			"name": "Registration",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"url": "http://localhost:8080/auth/signup"
-			},
-			"response": []
-		},
-		{
-			"name": "Authentication",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"url": "http://localhost:8080/auth/login"
-			},
-			"response": []
-		},
-		{
-			"name": "Logout",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"url": "http://localhost:8080/auth/logout"
-			},
-			"response": []
-		},
-		{
-			"name": "Password reset",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"url": "http://localhost:8080/auth/reset"
-			},
-			"response": []
-		},
-		{
-			"name": "Get user-profile information",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": "http://localhost:8080/user-profile/"
-			},
-			"response": []
-		},
-		{
-			"name": "Create user-profile information",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"url": "http://localhost:8080/user-profile/"
-			},
-			"response": []
-		},
-		{
-			"name": "Delete user-profile information",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": "http://localhost:8080/user-profile/"
-			},
-			"response": []
-		},
-		{
-			"name": "Get student-profile information",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": "http://localhost:8080/student-profile/"
-			},
-			"response": []
-		},
-		{
-			"name": "Create student-profile information",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"url": "http://localhost:8080/student-profile/"
-			},
-			"response": []
-		},
-		{
-			"name": "Delete student-profile information",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": "http://localhost:8080/student-profile/"
-			},
-			"response": []
-		},
-		{
-			"name": "Get teacher-profile information",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": "http://localhost:8080/teacher-profile/"
-			},
-			"response": []
-		},
-		{
-			"name": "Create teacher-profile information",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"url": "http://localhost:8080/teacher-profile/"
-			},
-			"response": []
-		},
-		{
-			"name": "Delete teacher-profile information",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": "http://localhost:8080/teacher-profile/"
-			},
-			"response": []
-		},
-		{
-			"name": "Get admin-profile information",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": "http://localhost:8080/admin-profile/"
-			},
-			"response": []
-		},
-		{
-			"name": "Create admin-profile information",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"url": "http://localhost:8080/admin-profile/"
-			},
-			"response": []
-		},
-		{
-			"name": "Delete admin-profile information",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": "http://localhost:8080/admin-profile/"
 			},
 			"response": []
 		}

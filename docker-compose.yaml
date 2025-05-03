@@ -6,7 +6,6 @@ services:
     build:
       context: .
       dockerfile: ./profile_service/Dockerfile
-    # restart: on-failure
     environment:
       - CONFIG_PATH=./configs
     expose:
@@ -16,6 +15,9 @@ services:
     depends_on:
       profile_database:
         condition: service_started
+    networks:
+      - profileNetwork
+      - servicesNetwork
 
   profile_database:
     container_name: profileService.postgres
@@ -36,10 +38,50 @@ services:
       timeout: 60s
       retries: 5
       start_period: 10s
+    networks:
+      - profileNetwork
 
-  # organization_service:
+  organization_service:
+    container_name: organizationService.api
+    build:
+      context: .
+      dockerfile: ./organization_service/Dockerfile
+    environment:
+      - CONFIG_PATH=./configs
+    expose:
+      - "8081"
+    ports:
+      - "8081:8081"
+    depends_on:
+      organization_database:
+        condition: service_started
+      profile_service:
+        condition: service_started
+    networks:
+      - organizationNetwork
+      - servicesNetwork
 
-  # organization_database:
+  organization_database:
+    container_name: organizationService.postgres
+    image: postgres:latest
+    restart: on-failure
+    expose:
+      - "5433"
+    ports:
+      - "5433:5432"
+    env_file:
+      - ./organization_service/configs/db.env
+    volumes:
+      - organizationService.postgres.data:/var/lib/postgresql/profiles:rw
+      - ./organization_service/configs/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
+      interval: 10s
+      timeout: 60s
+      retries: 5
+      start_period: 10s
+    networks:
+      - organizationNetwork
 
   # assessment_service:
 
@@ -48,7 +90,10 @@ services:
   # api_gateway:
 
 networks:
-  profileService.postgres.network: { }
+  profileNetwork: {}
+  organizationNetwork: {}
+  servicesNetwork: {}
 
 volumes:
   profileService.postgres.data: { }
+  organizationService.postgres.data: { }

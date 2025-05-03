@@ -1,0 +1,366 @@
+{
+	"info": {
+		"_postman_id": "5455fb53-59c6-48ca-b3e6-2cc7c3906250",
+		"name": "SaturnLMS organization_service integration tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28233508"
+	},
+	"item": [
+		{
+			"name": "University",
+			"item": [
+				{
+					"name": "Get university information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/university/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create university  information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"HSE\",\r\n    \"description\": \"Description of HSE university\",\r\n    \"legal_address\": \"Moscow/Pokrovsky boulvard/h.11\",\r\n    \"actual_address\": \"Moscow/Pokrovsky boulvard/h.11\",\r\n    \"inn\": \"1234567891\",\r\n    \"bank_name\": \"SberBank\",\r\n    \"owner_id\": \"7504d692-e403-4245-8e41-41006d820919\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/university/"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete university  information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8081/university/HSE"
+					},
+					"response": []
+				},
+				{
+					"name": "Get university by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/university/HSE"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Facultaty",
+			"item": [
+				{
+					"name": "Get facultaty information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/facultaty/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create facultaty information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"FCS\",\r\n    \"description\": \"Description of FCS facultaty\",\r\n    \"university_name\": \"HSE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/facultaty/"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete facultaty information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8081/facultaty/HSE"
+					},
+					"response": []
+				},
+				{
+					"name": "Get facultaty  by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/facultaty/HSE"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Program",
+			"item": [
+				{
+					"name": "Get programs information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/program/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create program information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"SE\",\r\n    \"description\": \"Description of FCS facultaty\",\r\n    \"type\": \"Bachelor\",\r\n    \"languages\": \"RU, ENG\",\r\n    \"facultaty_name\": \"FCS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/program/"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete program information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8081/program/FCS"
+					},
+					"response": []
+				},
+				{
+					"name": "Get program by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/program/SE"
+					},
+					"response": []
+				},
+				{
+					"name": "Get programs information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/program/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create program information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"SE\",\r\n    \"description\": \"Description of FCS facultaty\",\r\n    \"type\": \"Bachelor\",\r\n    \"languages\": \"RU, ENG\",\r\n    \"facultaty_name\": \"FCS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/program/"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete program information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8081/program/FCS"
+					},
+					"response": []
+				},
+				{
+					"name": "Get program by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/program/SE"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Group",
+			"item": [
+				{
+					"name": "Get groups information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/group/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create group information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number\": 222,\r\n    \"name\": \"BPI-222\",\r\n    \"course_number\": 3,\r\n    \"program_name\": \"SE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/group/"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete group information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8081/group/222"
+					},
+					"response": []
+				},
+				{
+					"name": "Get group  by number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/group/222"
+					},
+					"response": []
+				},
+				{
+					"name": "Get groups information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/group/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create group information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number\": 222,\r\n    \"name\": \"BPI-222\",\r\n    \"course_number\": 3,\r\n    \"program_name\": \"SE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/group/"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete group information",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8081/group/222"
+					},
+					"response": []
+				},
+				{
+					"name": "Get group  by number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/group/222"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Healthcheck",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/healthcheck"
+			},
+			"response": []
+		}
+	]
+}

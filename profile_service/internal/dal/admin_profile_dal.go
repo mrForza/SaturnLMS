@@ -13,7 +13,7 @@ import (
 
 func GetAllAdminProfiles() ([]models.AdminProfile, error) {
 	var adminProfiles []models.AdminProfile
-	query := "SELECT id, education, work_experience, achievements, languages FROM admin_profile;"
+	query := "SELECT id, education, work_experience, achievements, languages FROM administrative_profile;"
 
 	err := Db.Select(&adminProfiles, query)
 	if err != nil {
@@ -28,7 +28,7 @@ func GetAdminProfileById(id string) (*models.AdminProfile, error) {
 
 	query := `
         SELECT id, education, work_experience, achievements, languages
-        FROM admin_profile
+        FROM administrative_profile
         WHERE id = $1;
     `
 
@@ -44,7 +44,7 @@ func GetAdminProfileById(id string) (*models.AdminProfile, error) {
 }
 
 func CreateAdminProfile(id uuid.UUID, AdminProfile dtos.CreateAdminProfileRequestDto) (uuid.UUID, error) {
-	query := "INSERT INTO admin_profile (id, education, work_experience, achievements, languages) VALUES ($1, $2, $3, $4, $5);"
+	query := "INSERT INTO administrative_profile (id, education, work_experience, achievements, languages) VALUES ($1, $2, $3, $4, $5);"
 
 	_, err := Db.Exec(
 		query,
@@ -65,7 +65,7 @@ func CreateAdminProfile(id uuid.UUID, AdminProfile dtos.CreateAdminProfileReques
 
 func DeleteAdminById(id string) error {
 	query := `
-        DELETE FROM admin_profile
+        DELETE FROM administrative_profile
         WHERE id = $1;
     `
 

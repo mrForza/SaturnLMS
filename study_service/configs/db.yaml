@@ -1,0 +1,3 @@
+host: "studyService.mongo"
+port: 27017
+database: "study"

@@ -83,17 +83,54 @@ services:
     networks:
       - organizationNetwork
 
-  # assessment_service:
+  study_service:
+    container_name: studyService.api
+    build:
+      context: .
+      dockerfile: ./study_service/Dockerfile
+    environment:
+      - CONFIG_PATH=./configs
+    expose:
+      - "8083"
+    ports:
+      - "8083:8083"
+    depends_on:
+      study_database:
+        condition: service_started
+      profile_service:
+        condition: service_started
+    networks:
+      - organizationNetwork
+      - servicesNetwork
+
+  study_database:
+    image: mongo:latest
+    container_name: studyService.mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+    volumes:
+      - studyService.mongo.data:/data/db
+      - ./study_service/internal/dal/migrations/init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - studyNetwork
+    restart: unless-stopped
 
   # study_service:
+
+  # assessment_service:
 
   # api_gateway:
 
 networks:
-  profileNetwork: {}
-  organizationNetwork: {}
-  servicesNetwork: {}
+  profileNetwork: { }
+  organizationNetwork: { }
+  studyNetwork: { }
+  servicesNetwork: { }
 
 volumes:
   profileService.postgres.data: { }
   organizationService.postgres.data: { }
+  studyService.mongo.data: { }

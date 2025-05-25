@@ -150,7 +150,7 @@ func UploadFileInLesson(ctx *gin.Context) {
 		Files:    files,
 	})
 
-	if dto.IsError == true {
+	if dto.IsError {
 		ctx.JSON(http.StatusBadRequest, gin.H{"message": dto.Message})
 		return
 	}
@@ -172,7 +172,7 @@ func DeleteFileFromLesson(ctx *gin.Context) {
 		FileName: fileName,
 	})
 
-	if dto.IsError == true {
+	if dto.IsError {
 		ctx.JSON(http.StatusBadRequest, gin.H{"message": dto.Message})
 		return
 	}

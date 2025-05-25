@@ -10,4 +10,5 @@ type Course struct {
 	Languages   []string    `db:"languages"`
 	Teachers    []uuid.UUID `db:"teachers"`
 	Students    []uuid.UUID `db:"students"`
+	Lessons     []uuid.UUID `db:"lessons"`
 }

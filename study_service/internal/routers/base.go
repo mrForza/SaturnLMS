@@ -13,11 +13,7 @@ func InitRouters(baseRouter *gin.Engine) {
 
 	RegisterHealthcheckRouter(baseRouter)
 
-	RegisterUserProfileRouters(baseRouter)
+	RegisterCourseRouter(baseRouter)
 
-	RegisterStudentProfileRouters(baseRouter)
-
-	RegisterTeacherProfileRouters(baseRouter)
-
-	RegisterAdminProfileRouters(baseRouter)
+	RegisterLessonRouter(baseRouter)
 }

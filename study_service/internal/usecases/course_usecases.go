@@ -7,12 +7,13 @@ import (
 	"github.com/mrForza/SaturnLMS/study_service/internal/dal"
 	"github.com/mrForza/SaturnLMS/study_service/internal/dtos"
 	"github.com/mrForza/SaturnLMS/study_service/internal/models"
-	"github.com/mrForza/SaturnLMS/study_service/internal/validators"
 )
+
+var courseRepository = dal.NewCourseRepository(dal.Client.Database("study_db"))
 
 func GetAllCourses() dtos.GetAllCoursesResponseDto {
 	var Courses []models.Course
-	Courses, _ = dal.GetAllCourses()
+	Courses, _ = courseRepository.GetAllCourses()
 
 	return dtos.GetAllCoursesResponseDto{
 		Courses: Courses,
@@ -20,7 +21,7 @@ func GetAllCourses() dtos.GetAllCoursesResponseDto {
 }
 
 func GetCourseById(dto dtos.GetCourseByIdRequest) (dtos.GetCourseByIdResponse, error) {
-	Course, err := dal.GetCourseById(dto.Id)
+	Course, err := courseRepository.GetCourseById(dto.Id)
 
 	if err != nil {
 		return dtos.GetCourseByIdResponse{Course: nil}, err
@@ -30,35 +31,17 @@ func GetCourseById(dto dtos.GetCourseByIdRequest) (dtos.GetCourseByIdResponse, e
 }
 
 func CreateCourse(dto dtos.CreateCourseRequestDto) dtos.CreateCourseResponseDto {
-	if err := validators.ValidateCourseInitials(dto.FirstName, "FirstName"); err != nil {
-		return dtos.CreateCourseResponseDto{Message: err.Error()}
+	var course = models.Course{
+		Id:          uuid.New(),
+		Name:        dto.Name,
+		Description: dto.Description,
+		Formula:     dto.Formula,
+		Languages:   dto.Languages,
+		Teachers:    dto.Teachers,
+		Students:    dto.Students,
+		Lessons:     dto.Lessons,
 	}
-
-	if err := validators.ValidateCourseInitials(dto.LastName, "LastName"); err != nil {
-		return dtos.CreateCourseResponseDto{Message: err.Error()}
-	}
-
-	if err := validators.ValidateCourseInitials(dto.FatherName, "FatherName"); err != nil {
-		return dtos.CreateCourseResponseDto{Message: err.Error()}
-	}
-
-	if err := validators.ValidateAge(dto.Age); err != nil {
-		return dtos.CreateCourseResponseDto{Message: err.Error()}
-	}
-
-	if err := validators.ValidateGender(bool(dto.Gender)); err != nil {
-		return dtos.CreateCourseResponseDto{Message: err.Error()}
-	}
-
-	if err := validators.ValidateAboutMe(dto.AboutMe); err != nil {
-		return dtos.CreateCourseResponseDto{Message: err.Error()}
-	}
-
-	if err := validators.ValidateInterests(dto.Interests); err != nil {
-		return dtos.CreateCourseResponseDto{Message: err.Error()}
-	}
-
-	CourseId, err := dal.CreateCourse(uuid.New(), dto)
+	CourseId, err := courseRepository.CreateCourse(uuid.New(), course)
 	if err != nil {
 		return dtos.CreateCourseResponseDto{Message: err.Error()}
 	}
@@ -69,5 +52,5 @@ func CreateCourse(dto dtos.CreateCourseRequestDto) dtos.CreateCourseResponseDto 
 }
 
 func DeleteCourse(dto dtos.DeleteCourseByIdRequest) error {
-	return dal.DeleteCourseById(dto.Id)
+	return courseRepository.DeleteCourseById(dto.Id)
 }

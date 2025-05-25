@@ -6,12 +6,13 @@ import (
 )
 
 type CreateCourseRequestDto struct {
-	Name        string      `db:"name"`
-	Description string      `db:"description"`
-	Formula     string      `db:"formula"`
-	Languages   []string    `db:"languages"`
-	Teachers    []uuid.UUID `db:"teachers"`
-	Students    []uuid.UUID `db:"students"`
+	Name        string      `json:"name"`
+	Description string      `json:"description"`
+	Formula     string      `json:"formula"`
+	Languages   []string    `json:"languages"`
+	Teachers    []uuid.UUID `json:"teachers"`
+	Students    []uuid.UUID `json:"students"`
+	Lessons     []uuid.UUID `json:"lessons"`
 }
 
 type CreateCourseResponseDto struct {

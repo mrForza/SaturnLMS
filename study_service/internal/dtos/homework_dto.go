@@ -8,10 +8,10 @@ import (
 )
 
 type CreateHomeworkRequestDto struct {
-	Id          uuid.UUID        `db:"id"`
-	Name        string           `db:"name"`
-	Description string           `db:"description"`
-	Files       []multipart.File `db:"files"`
+	Id          uuid.UUID              `json:"id"`
+	Name        string                 `json:"name"`
+	Description string                 `json:"description"`
+	Files       []multipart.FileHeader `json:"files"`
 }
 
 type CreateHomeworkResponseDto struct {

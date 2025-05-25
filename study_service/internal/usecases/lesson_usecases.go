@@ -4,54 +4,70 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
-	"github.com/mrForza/SaturnLMS/profile_service/internal/dal"
-	"github.com/mrForza/SaturnLMS/profile_service/internal/dtos"
-	"github.com/mrForza/SaturnLMS/profile_service/internal/models"
-	"github.com/mrForza/SaturnLMS/profile_service/internal/validators"
+	"github.com/mrForza/SaturnLMS/study_service/internal/dal"
+	"github.com/mrForza/SaturnLMS/study_service/internal/dtos"
+	"github.com/mrForza/SaturnLMS/study_service/internal/models"
 )
 
-func GetAllAdminProfiles() dtos.GetAllAdminProfilesResponseDto {
-	var adminProfiles []models.AdminProfile
-	adminProfiles, _ = dal.GetAllAdminProfiles()
+var lessonRepository = dal.NewLessonRepository(dal.Client.Database("study_db"))
 
-	return dtos.GetAllAdminProfilesResponseDto{
-		AdminProfiles: adminProfiles,
-	}
-}
+func CreateLesson(dto dtos.CreateLessonRequestDto) dtos.CreateLessonResponseDto {
+	id := uuid.New()
 
-func GetAdminProfileById(dto dtos.GetAdminProfileByIdRequest) (dtos.GetAdminProfileByIdResponse, error) {
-	adminProfile, err := dal.GetAdminProfileById(dto.Id)
-
+	err := dal.CreateLessonBucketByUUID(dal.MinioClient, id)
 	if err != nil {
-		return dtos.GetAdminProfileByIdResponse{AdminProfile: nil}, err
+		return dtos.CreateLessonResponseDto{
+			Message: "Error while upload a file",
+		}
 	}
 
-	return dtos.GetAdminProfileByIdResponse{AdminProfile: adminProfile}, nil
-}
-
-func CreateAdminProfile(dto dtos.CreateAdminProfileRequestDto) (*string, error) {
-	if err := validators.ValidateStringField(dto.Education, 1024, "education"); err != nil {
-		return nil, err
-	}
-	if err := validators.ValidateStringField(dto.WorkExperience, 65536, "work experience"); err != nil {
-		return nil, err
-	}
-	if err := validators.ValidateStringField(dto.Achievements, 65536, "achievements"); err != nil {
-		return nil, err
-	}
-	if err := validators.ValidateStringField(dto.Languages, 128, "languages"); err != nil {
-		return nil, err
+	var _, err2 = dal.UploadFilesToLessonBucket(dal.MinioClient, id, dto.Files)
+	if err2 != nil {
+		return dtos.CreateLessonResponseDto{
+			Message: "Error while upload a file",
+		}
 	}
 
-	userProfileId, err := dal.CreateAdminProfile(uuid.New(), dto)
+	lesson := models.Lesson{}
+	id, err = lessonRepository.CreateLesson(id, lesson)
 	if err != nil {
-		return nil, err
+		return dtos.CreateLessonResponseDto{
+			Message: err.Error(),
+		}
 	}
 
-	var message = fmt.Sprintf("the 'admin profile' with id %s has been seccessfully added", userProfileId)
-	return &message, nil
+	return dtos.CreateLessonResponseDto{
+		Message: fmt.Sprintf("The lesson with id: %s was successfully added", id),
+	}
 }
 
-func DeleteAdminProfile(dto dtos.DeleteAdminProfileByIdRequest) error {
-	return dal.DeleteAdminById(dto.Id)
+func DeleteLesson(dto dtos.DeleteLessonByIdRequest) error {
+	return lessonRepository.DeleteLessonById(dto.Id)
+}
+
+func UploadFileIntoLessonById(dto dtos.UploadFileRequestDto) dtos.UploadFileResponseDto {
+	err := dal.UploadFileToLesson(dal.MinioClient, dto.BucketId.String(), dto.Files[0])
+	if err != nil {
+		return dtos.UploadFileResponseDto{Message: err.Error(), IsError: true}
+	}
+
+	return dtos.UploadFileResponseDto{Message: "The file was successfully added into Lesson", IsError: false}
+}
+
+func DeleteFileFromLessonById(dto dtos.DeleteFileRequestDto) dtos.DeleteFileResponseDto {
+	err := dal.DeleteFileFromMinIO(dal.MinioClient, dto.BucketId.String(), dto.FileName)
+	if err != nil {
+		return dtos.DeleteFileResponseDto{Message: err.Error(), IsError: true}
+	}
+
+	return dtos.DeleteFileResponseDto{Message: "The file was successfully removed from Lesson", IsError: false}
+}
+
+func DownloadFileFromLessonById(dto dtos.DownloadFileRequestDto) dtos.DownloadFileResponseDto {
+	file, err := dal.DownloadFileFromMinIO(dal.MinioClient, dto.BucketId.String(), dto.FileName)
+	if err != nil {
+		return dtos.DownloadFileResponseDto{File: nil, IsError: true}
+	}
+
+	return dtos.DownloadFileResponseDto{File: &file, IsError: false}
 }

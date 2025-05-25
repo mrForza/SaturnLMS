@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/mrForza/SaturnLMS/profile_service/internal/dtos"
-	"github.com/mrForza/SaturnLMS/profile_service/internal/usecases"
+	"github.com/mrForza/SaturnLMS/study_service/internal/dtos"
+	"github.com/mrForza/SaturnLMS/study_service/internal/usecases"
 )
 
 func RegisterCourseRouter(baseRouter *gin.Engine) {
@@ -39,7 +39,7 @@ func GetCourseById(ctx *gin.Context) {
 }
 
 func CreateCourseRoute(ctx *gin.Context) {
-	var request dtos.CreateUserRequestDto
+	var request dtos.CreateCourseRequestDto
 	if err := ctx.ShouldBindJSON(&request); err != nil {
 		ctx.JSON(400, gin.H{"error": "incorrect structure of request"})
 		return

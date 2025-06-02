@@ -9,4 +9,4 @@ app.include_router(student_profile_router.router)
 app.include_router(teacher_profile_router.router)
 app.include_router(admin_profile_router.router)
 
-print('Lorem ipsum')
+print('Lorem ipsum v2.0')
